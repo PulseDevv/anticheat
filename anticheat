@@ -10,21 +10,20 @@ Write-Host @"
 
 Write-Host "Made by MinikAyicuhV5 / Kennedy for Your Sweetie`n"
 
-# Menü bir kez yazdırılıyor.
-Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
-Write-Host "1. Disk Kontrolü (diskmgmt.msc)"
-Write-Host "2. Icon Kontrolü (shell:::05d7b0f4-2121-4eff-bf6b-ed3f69b894d9)"
-Write-Host "3. Son Çalıştırılanlar (shell:recent)"
-Write-Host "4. Crash Dumps (C:\Users\%username%\AppData\Local\CrashDumps)"
-Write-Host "5. Rar Kontrolü (WinRAR ArcHistory)"
-Write-Host "6. DirectX Kontrolü"
-Write-Host "7. USB Kontrolü"
-Write-Host "8. Son Çalıştırılanlar (shell:recent)"
-Write-Host "9. Çalıştırılan Exeler Loglama"
-Write-Host "10. Cleaner Kontrolü Loglama"
-Write-Host "11. Çıkış"
-
 do {
+    Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
+    Write-Host "1. Disk Kontrolü (diskmgmt.msc)"
+    Write-Host "2. Icon Kontrolü (shell:::05d7b0f4-2121-4eff-bf6b-ed3f69b894d9)"
+    Write-Host "3. Son Çalıştırılanlar (shell:recent)"
+    Write-Host "4. Crash Dumps (C:\Users\%username%\AppData\Local\CrashDumps)"
+    Write-Host "5. Rar Kontrolü (WinRAR ArcHistory)"
+    Write-Host "6. DirectX Kontrolü"
+    Write-Host "7. USB Kontrolü"
+    Write-Host "8. Son Çalıştırılanlar (shell:recent)"
+    Write-Host "9. Çalıştırılan Exeler Loglama"
+    Write-Host "10. Cleaner Kontrolü Loglama"
+    Write-Host "11. Çıkış"
+
     $choice = Read-Host "Seçiminizi yapın"
 
     switch ($choice) {
@@ -59,12 +58,12 @@ do {
             Write-Host "USB cihaz geçmişi kontrol ediliyor..." -ForegroundColor Yellow
         }
         "8" {
-            $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
+           $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
 
-            Get-ItemProperty -Path $AppSwitchedPath |
-            findstr /i /C:":\" |
-            Sort-Object LastWriteTime |
-            Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
+           Get-ItemProperty -Path $AppSwitchedPath |
+           findstr /i /C:":\" |
+           Sort-Object LastWriteTime |
+           Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
         }
         "9" {
             $backupPath = "$env:USERPROFILE\Desktop\backup.txt"
@@ -90,4 +89,5 @@ do {
         }
     }
 
-} while ($choice -ne "11") # Kullanıcı "11" seçeneğini girene kadar devam et.
+    Write-Host "" 
+} while ($choice -ne "11") # Kullanıcı "11" seçeneğini girene kadar devam et
