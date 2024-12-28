@@ -10,20 +10,21 @@ Write-Host @"
 
 Write-Host "Made by MinikAyicuhV5 / Kennedy for Your Sweetie`n"
 
-do {
-    Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
-    Write-Host "1. Disk Kontrolü (diskmgmt.msc)"
-    Write-Host "2. Icon Kontrolü (shell:::05d7b0f4-2121-4eff-bf6b-ed3f69b894d9)"
-    Write-Host "3. Son Çalıştırılanlar (shell:recent)"
-    Write-Host "4. Crash Dumps (C:\Users\%username%\AppData\Local\CrashDumps)"
-    Write-Host "5. Rar Kontrolü (WinRAR ArcHistory)"
-    Write-Host "6. DirectX Kontrolü"
-    Write-Host "7. USB Kontrolü"
-    Write-Host "8. Son Çalıştırılanlar (shell:recent)"
-    Write-Host "9. Çalıştırılan Exeler Loglama"
-    Write-Host "10. Cleaner Kontrolü Loglama"
-    Write-Host "11. Çıkış"
+# Menü seçeneklerini tek bir kez gösteriyoruz
+Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
+Write-Host "1. Disk Kontrolü (diskmgmt.msc)"
+Write-Host "2. Icon Kontrolü (shell:::05d7b0f4-2121-4eff-bf6b-ed3f69b894d9)"
+Write-Host "3. Son Çalıştırılanlar (shell:recent)"
+Write-Host "4. Crash Dumps (C:\Users\%username%\AppData\Local\CrashDumps)"
+Write-Host "5. Rar Kontrolü (WinRAR ArcHistory)"
+Write-Host "6. DirectX Kontrolü"
+Write-Host "7. USB Kontrolü"
+Write-Host "8. Son Çalıştırılanlar (shell:recent)"
+Write-Host "9. Çalıştırılan Exeler Loglama"
+Write-Host "10. Cleaner Kontrolü Loglama"
+Write-Host "11. Çıkış"
 
+do {
     $choice = Read-Host ""
 
     switch ($choice) {
@@ -89,5 +90,20 @@ do {
         }
     }
 
-    Write-Host ""
+    if ($choice -ne "11") {
+        # Kullanıcı "11" seçeneğini seçmediyse, menüyü tekrar göstermek istiyoruz
+        Write-Host ""
+        Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
+        Write-Host "1. Disk Kontrolü (diskmgmt.msc)"
+        Write-Host "2. Icon Kontrolü (shell:::05d7b0f4-2121-4eff-bf6b-ed3f69b894d9)"
+        Write-Host "3. Son Çalıştırılanlar (shell:recent)"
+        Write-Host "4. Crash Dumps (C:\Users\%username%\AppData\Local\CrashDumps)"
+        Write-Host "5. Rar Kontrolü (WinRAR ArcHistory)"
+        Write-Host "6. DirectX Kontrolü"
+        Write-Host "7. USB Kontrolü"
+        Write-Host "8. Son Çalıştırılanlar (shell:recent)"
+        Write-Host "9. Çalıştırılan Exeler Loglama"
+        Write-Host "10. Cleaner Kontrolü Loglama"
+        Write-Host "11. Çıkış"
+    }
 } while ($choice -ne "11") # Kullanıcı "11" seçeneğini girene kadar devam et
