@@ -24,7 +24,7 @@ do {
     Write-Host "10. Cleaner Kontrolü Loglama"
     Write-Host "11. Çıkış"
 
-    $choice = Read-Host "Seçiminizi yapın"
+    $choice = Read-Host ""
 
     switch ($choice) {
         "1" {
@@ -58,12 +58,12 @@ do {
             Write-Host "USB cihaz geçmişi kontrol ediliyor..." -ForegroundColor Yellow
         }
         "8" {
-           $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
+            $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
 
-           Get-ItemProperty -Path $AppSwitchedPath |
-           findstr /i /C:":\" |
-           Sort-Object LastWriteTime |
-           Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
+            Get-ItemProperty -Path $AppSwitchedPath |
+            findstr /i /C:":\" |
+            Sort-Object LastWriteTime |
+            Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
         }
         "9" {
             $backupPath = "$env:USERPROFILE\Desktop\backup.txt"
@@ -89,5 +89,5 @@ do {
         }
     }
 
-    Write-Host "" 
+    Write-Host ""
 } while ($choice -ne "11") # Kullanıcı "11" seçeneğini girene kadar devam et
