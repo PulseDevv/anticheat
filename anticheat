@@ -31,7 +31,10 @@ do {
     Write-Host "11. Eski Dosyaları Loglama"
     Write-Host "12. Issus.exe Loglarını İncele"
     Write-Host "13. Explorer.exe Loglarını İncele"
-    Write-Host "14. Çıkış"
+    Write-Host "14. AudioExe Kontrolü (Brave)"
+    Write-Host "15. AudioExe Kontrolü (Chrome)"
+    Write-Host "16. AudioExe Kontrolü (Opera)"
+    Write-Host "17. Çıkış"
 
     $choice = Read-Host "Seçiminizi yapın"
 
@@ -61,7 +64,11 @@ do {
             reg export "HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput\MostRecentApplication" "$env:USERPROFILE\Desktop\MostRecentApp.reg" /y
             Write-Host "DirectX kayıtları yedeklendi." -ForegroundColor Yellow
         }
-        "7" {
+        "14" {
+            start brave.exe https://www.nirsoft.net/utils/appaudioconfig-x64.zip
+            Write-Host "AudioConfig İndiriliyor." -ForegroundColor Yellow
+        }
+         "7" {
             reg export "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" "$env:USERPROFILE\Desktop\BrowserKontrol.reg" /y
             Write-Host "Browser kayıtları yedeklendi." -ForegroundColor Yellow
         }
