@@ -15,13 +15,13 @@ do {
     Write-Host "1. Disk Kontrolü (diskmgmt.msc)"
     Write-Host "2. Icon Kontrolü (shell:::05d7b0f4-2121-4eff-bf6b-ed3f69b894d9)"
     Write-Host "3. Son Çalıştırılanlar (shell:recent)"
-    Write-Host "4. Crash Dumps (C:\Users\%username%\AppData\Local\CrashDumps)"
+    Write-Host "4. Crash Dumps (C:\Users\$env:USERNAME\AppData\Local\CrashDumps)"
     Write-Host "5. Rar Kontrolü (WinRAR ArcHistory)"
     Write-Host "6. DirectX Kontrolü"
     Write-Host "7. USB Kontrolü"
-    Write-Host "8. Son Çalıştırılanlar (shell:recent)"
+    Write-Host "8. Son Kullanılan Uygulamalar"
     Write-Host "9. Çalıştırılan Exeler Loglama"
-    Write-Host "10. Cleaner Kontrolü Loglama"
+    Write-Host "10. Eski Dosyaları Loglama"
     Write-Host "11. Çıkış"
 
     $choice = Read-Host "Seçiminizi yapın"
@@ -40,46 +40,41 @@ do {
             Write-Host "Son Çalıştırılanlar açılıyor..." -ForegroundColor Yellow
         }
         "4" {
-            $path = "$env:LOCALAPPDATA\CrashDumps"
-            Start-Process "explorer.exe" $path
+            Start-Process "explorer.exe" "$env:LOCALAPPDATA\CrashDumps"
             Write-Host "Crash Dumps klasörü açılıyor..." -ForegroundColor Yellow
         }
         "5" {
-            Start-Process "regedit.exe" "/e RarKontrol.reg HKEY_CURRENT_USER\SOFTWARE\WinRAR\ArcHistory"
-            Write-Host "WinRAR kayıtları kontrol ediliyor..." -ForegroundColor Yellow
+            reg export "HKEY_CURRENT_USER\SOFTWARE\WinRAR\ArcHistory" "$env:USERPROFILE\Desktop\RarKontrol.reg" /y
+            Write-Host "WinRAR kayıtları yedeklendi." -ForegroundColor Yellow
         }
         "6" {
-            Start-Process "regedit.exe" "/e DirectXKontrol.reg HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput"
-            Start-Process "regedit.exe" "/e MostRecentApp.reg HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput\MostRecentApplication"
-            Write-Host "DirectX kayıtları kontrol ediliyor..." -ForegroundColor Yellow
+            reg export "HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput" "$env:USERPROFILE\Desktop\DirectXKontrol.reg" /y
+            reg export "HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectInput\MostRecentApplication" "$env:USERPROFILE\Desktop\MostRecentApp.reg" /y
+            Write-Host "DirectX kayıtları yedeklendi." -ForegroundColor Yellow
         }
         "7" {
-            Start-Process "regedit.exe" "/e USBKontrol.reg HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR"
-            Write-Host "USB cihaz geçmişi kontrol ediliyor..." -ForegroundColor Yellow
+            reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR" "$env:USERPROFILE\Desktop\USBKontrol.reg" /y
+            Write-Host "USB cihaz geçmişi yedeklendi." -ForegroundColor Yellow
         }
         "8" {
-           $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
-
-           Get-ItemProperty -Path $AppSwitchedPath |
-           findstr /i /C:":\" |
-           Sort-Object LastWriteTime |
-           Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
+            $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
+            Get-ItemProperty -Path $AppSwitchedPath |
+            Select-Object * |
+            Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
         }
         "9" {
             $backupPath = "$env:USERPROFILE\Desktop\backup.txt"
-            Get-WmiObject Win32_Process | ForEach-Object {
+            Get-CimInstance Win32_Process | ForEach-Object {
                 "$($_.Name) - $($_.CreationDate)" | Out-File -Append $backupPath
             }
             Write-Host "Çalıştırılan Exeler yedekleniyor. Dosya: $backupPath" -ForegroundColor Yellow
         }
         "10" {
             $cleanerPath = "$env:USERPROFILE\Desktop\backupcleaner.txt"
-            Get-ChildItem -Path $env:USERPROFILE -Recurse -ErrorAction SilentlyContinue | ForEach-Object {
-                if ($_.LastWriteTime -lt (Get-Date).AddDays(-1)) {
-                    "$($_.FullName) - $($_.LastWriteTime)" | Out-File -Append $cleanerPath
-                }
-            }
-            Write-Host "Silinen dosyalar yedekleniyor. Dosya: $cleanerPath" -ForegroundColor Yellow
+            Get-ChildItem -Path $env:USERPROFILE -Recurse -File -ErrorAction SilentlyContinue |
+            Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-1) } |
+            ForEach-Object { "$($_.FullName) - $($_.LastWriteTime)" | Out-File -Append $cleanerPath }
+            Write-Host "Eski dosyalar loglandı. Dosya: $cleanerPath" -ForegroundColor Yellow
         }
         "11" {
             Write-Host "Çıkış yapılıyor..." -ForegroundColor Red
@@ -88,6 +83,5 @@ do {
             Write-Host "Geçersiz seçim, lütfen 1-11 arasında bir değer girin." -ForegroundColor Red
         }
     }
-
-    Write-Host "" 
-} while ($choice -ne "11") # Kullanıcı "11" seçeneğini girene kadar devam et
+    Write-Host ""
+} while ($choice -ne "11")
