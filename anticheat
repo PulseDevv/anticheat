@@ -59,7 +59,7 @@ do {
             $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
             Get-ItemProperty -Path $AppSwitchedPath |
             Select-Object * |
-            Out-GridView -PassThru -Title 'Appswitch Script by Gothic Girl lover'
+            Out-GridView -PassThru -Title 'XDDDDDDD'
         }
         "9" {
             $backupPath = "$env:USERPROFILE\Desktop\backup.txt"
