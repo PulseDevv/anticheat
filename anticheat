@@ -22,7 +22,9 @@ do {
     Write-Host "8. Son Kullanılan Uygulamalar"
     Write-Host "9. Çalıştırılan Exeler Loglama"
     Write-Host "10. Eski Dosyaları Loglama"
-    Write-Host "11. Çıkış"
+    Write-Host "11. Issus.exe Loglarını İncele"
+    Write-Host "12. Explorer.exe Loglarını İncele"
+    Write-Host "13. Çıkış"
 
     $choice = Read-Host "Seçiminizi yapın"
 
@@ -77,11 +79,29 @@ do {
             Write-Host "Eski dosyalar loglandı. Dosya: $cleanerPath" -ForegroundColor Yellow
         }
         "11" {
+            $issusLogPath = "$env:USERPROFILE\AppData\Local\Temp\issus.log"
+            if (Test-Path $issusLogPath) {
+                Get-Content $issusLogPath | Out-GridView -Title "Issus.exe Logları"
+                Write-Host "Issus.exe logları gösterildi." -ForegroundColor Yellow
+            } else {
+                Write-Host "Issus.exe log dosyası bulunamadı." -ForegroundColor Red
+            }
+        }
+        "12" {
+            $explorerLogPath = "$env:USERPROFILE\AppData\Local\Microsoft\Windows\Explorer"
+            if (Test-Path $explorerLogPath) {
+                Get-ChildItem $explorerLogPath | Out-GridView -Title "Explorer.exe Logları"
+                Write-Host "Explorer.exe logları gösterildi." -ForegroundColor Yellow
+            } else {
+                Write-Host "Explorer.exe log klasörü bulunamadı." -ForegroundColor Red
+            }
+        }
+        "13" {
             Write-Host "Çıkış yapılıyor..." -ForegroundColor Red
         }
         Default {
-            Write-Host "Geçersiz seçim, lütfen 1-11 arasında bir değer girin." -ForegroundColor Red
+            Write-Host "Geçersiz seçim, lütfen 1-13 arasında bir değer girin." -ForegroundColor Red
         }
     }
     Write-Host ""
-} while ($choice -ne "11")
+} while ($choice -ne "13")
