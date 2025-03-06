@@ -126,7 +126,7 @@ do {
             Write-Host "Çıkış yapılıyor..." -ForegroundColor Red
         }
         Default {
-            Write-Host "Geçersiz seçim, lütfen 1-172 arasında bir değer girin." -ForegroundColor Red
+            Write-Host "Geçersiz seçim, lütfen 1-17 arasında bir değer girin." -ForegroundColor Red
         }
     }
     Write-Host ""
