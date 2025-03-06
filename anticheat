@@ -68,6 +68,14 @@ do {
             start brave.exe https://www.nirsoft.net/utils/appaudioconfig-x64.zip
             Write-Host "AudioConfig İndiriliyor." -ForegroundColor Yellow
         }
+        "15" {
+            start chrome.exe https://www.nirsoft.net/utils/appaudioconfig-x64.zip
+            Write-Host "AudioConfig İndiriliyor." -ForegroundColor Yellow
+        }
+        "16" {
+            start opera.exe https://www.nirsoft.net/utils/appaudioconfig-x64.zip
+            Write-Host "AudioConfig İndiriliyor." -ForegroundColor Yellow
+        }
          "7" {
             reg export "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" "$env:USERPROFILE\Desktop\BrowserKontrol.reg" /y
             Write-Host "Browser kayıtları yedeklendi." -ForegroundColor Yellow
