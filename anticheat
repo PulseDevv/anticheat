@@ -14,13 +14,13 @@ Write-Host @"
                                    ---- \___|
 "@ -ForegroundColor Cyan
 
-Write-Host "Cheaters fucker / Made By Pulse/Ars`n"
+Write-Host "Cheaters fucker / Made By Pulse/Ars/DayiAtaflex`n"
 
 do {
     Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
     Write-Host "1. Disk Kontrolü"
     Write-Host "2. Icon Kontrolü"
-    Write-Host "3. Son Çalıştırılanla"
+    Write-Host "3. Son Silinenler"
     Write-Host "4. Crash Dumps"
     Write-Host "5. Rar Kontrolü"
     Write-Host "6. DirectX Kontrolü"
