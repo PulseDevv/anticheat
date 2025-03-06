@@ -1,14 +1,11 @@
 Clear-Host
 Write-Host @"
-██╗  ██╗███████╗███╗   ██╗███╗   ██╗███████╗██████╗ ██╗   ██╗
-██║ ██╔╝██╔════╝████╗  ██║████╗  ██║██╔════╝██╔══██╗╚██╗ ██╔╝
-█████╔╝ █████╗  ██╔██╗ ██║██╔██╗ ██║█████╗  ██║  ██║ ╚████╔╝ 
-██╔═██╗ ██╔══╝  ██║╚██╗██║██║╚██╗██║██╔══╝  ██║  ██║  ╚██╔╝  
-██║  ██╗███████╗██║ ╚████║██║ ╚████║███████╗██████╔╝   ██║   
-╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═════╝    ╚═╝   
+.----------.
+| SALVENIA |
+'----------'
 "@ -ForegroundColor Cyan
 
-Write-Host "Made by MinikAyicuhV5 / Kennedy for Your Sweetie`n"
+Write-Host "Pulse/Ars`n"
 
 do {
     Write-Host "Lütfen yapmak istediğiniz işlemi seçin:" -ForegroundColor Green
