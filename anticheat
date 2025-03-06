@@ -54,7 +54,7 @@ do {
         }
         "7" {
             reg export "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" "$env:USERPROFILE\Desktop\BrowserKontrol.reg" /y
-            Write-Host "DirectX kayıtları yedeklendi." -ForegroundColor Yellow
+            Write-Host "Browser kayıtları yedeklendi." -ForegroundColor Yellow
         }
         "8" {
             reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR" "$env:USERPROFILE\Desktop\USBKontrol.reg" /y
