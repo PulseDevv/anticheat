@@ -52,30 +52,34 @@ do {
             Write-Host "DirectX kayıtları yedeklendi." -ForegroundColor Yellow
         }
         "7" {
+            reg export "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" "$env:USERPROFILE\Desktop\BrowserKontrol.reg" /y
+            Write-Host "DirectX kayıtları yedeklendi." -ForegroundColor Yellow
+        }
+        "8" {
             reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR" "$env:USERPROFILE\Desktop\USBKontrol.reg" /y
             Write-Host "USB cihaz geçmişi yedeklendi." -ForegroundColor Yellow
         }
-        "8" {
+        "9" {
             $AppSwitchedPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FeatureUsage\AppSwitched"
             Get-ItemProperty -Path $AppSwitchedPath |
             Select-Object * |
             Out-GridView -PassThru -Title 'XDDDDDDD'
         }
-        "9" {
+        "10" {
             $backupPath = "$env:USERPROFILE\Desktop\backup.txt"
             Get-CimInstance Win32_Process | ForEach-Object {
                 "$($_.Name) - $($_.CreationDate)" | Out-File -Append $backupPath
             }
             Write-Host "Çalıştırılan Exeler yedekleniyor. Dosya: $backupPath" -ForegroundColor Yellow
         }
-        "10" {
+        "11" {
             $cleanerPath = "$env:USERPROFILE\Desktop\backupcleaner.txt"
             Get-ChildItem -Path $env:USERPROFILE -Recurse -File -ErrorAction SilentlyContinue |
             Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-1) } |
             ForEach-Object { "$($_.FullName) - $($_.LastWriteTime)" | Out-File -Append $cleanerPath }
             Write-Host "Eski dosyalar loglandı. Dosya: $cleanerPath" -ForegroundColor Yellow
         }
-        "11" {
+        "12" {
             $issusLogPath = "$env:USERPROFILE\AppData\Local\Temp\issus.log"
             if (Test-Path $issusLogPath) {
                 Get-Content $issusLogPath | Out-GridView -Title "Issus.exe Logları"
@@ -84,7 +88,7 @@ do {
                 Write-Host "Issus.exe log dosyası bulunamadı." -ForegroundColor Red
             }
         }
-        "12" {
+        "13" {
             $explorerLogPath = "$env:USERPROFILE\AppData\Local\Microsoft\Windows\Explorer"
             if (Test-Path $explorerLogPath) {
                 Get-ChildItem $explorerLogPath | Out-GridView -Title "Explorer.exe Logları"
@@ -93,7 +97,7 @@ do {
                 Write-Host "Explorer.exe log klasörü bulunamadı." -ForegroundColor Red
             }
         }
-        "13" {
+        "14" {
             Write-Host "Çıkış yapılıyor..." -ForegroundColor Red
         }
         Default {
