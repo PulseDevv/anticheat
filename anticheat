@@ -122,11 +122,11 @@ do {
                 Write-Host "Explorer.exe log klasörü bulunamadı." -ForegroundColor Red
             }
         }
-        "14" {
+        "17" {
             Write-Host "Çıkış yapılıyor..." -ForegroundColor Red
         }
         Default {
-            Write-Host "Geçersiz seçim, lütfen 1-13 arasında bir değer girin." -ForegroundColor Red
+            Write-Host "Geçersiz seçim, lütfen 1-17 arasında bir değer girin." -ForegroundColor Red
         }
     }
     Write-Host ""
