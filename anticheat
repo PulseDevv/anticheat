@@ -105,13 +105,14 @@ do {
             Write-Host "Eski dosyalar loglandı. Dosya: $cleanerPath" -ForegroundColor Yellow
         }
         "12" {
-            $issusLogPath = "$env:USERPROFILE\AppData\Local\Temp\issus.log"
-            if (Test-Path $issusLogPath) {
-                Get-Content $issusLogPath | Out-GridView -Title "Issus.exe Logları"
-                Write-Host "Issus.exe logları gösterildi." -ForegroundColor Yellow
+            $lsassLogPath = "$env:USERPROFILE\Desktop\lsass_logs.txt"
+            $lsassLogs = Get-WinEvent -LogName Security | Where-Object { $_.Message -match "lsass.exe" }
+            if ($lsassLogs) {
+                $lsassLogs | Format-List | Out-File $lsassLogPath
+                Write-Host "LSASS logları kaydedildi: $lsassLogPath" -ForegroundColor Green
+                Invoke-Item $lsassLogPath
             } else {
-                Write-Host "Issus.exe log dosyası bulunamadı." -ForegroundColor Red
-            }
+                Write-Host "LSASS ile ilgili herhangi bir log bulunamadı." -ForegroundColor Red
         }
         "13" {
             $explorerLogPath = "$env:USERPROFILE\AppData\Local\Microsoft\Windows\Explorer"
