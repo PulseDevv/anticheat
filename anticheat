@@ -29,7 +29,7 @@ do {
     Write-Host "9. Son Kullanılan Uygulamalar"
     Write-Host "10. Çalıştırılan Exeler Loglama"
     Write-Host "11. Eski Dosyaları Loglama"
-    Write-Host "12. Issus.exe Loglarını İncele"
+    Write-Host "12. lsass.exe Loglarını İncele"
     Write-Host "13. Explorer.exe Loglarını İncele"
     Write-Host "14. AudioExe Kontrolü (Brave)"
     Write-Host "15. AudioExe Kontrolü (Chrome)"
