@@ -113,6 +113,7 @@ do {
                 Invoke-Item $lsassLogPath
             } else {
                 Write-Host "LSASS ile ilgili herhangi bir log bulunamadı." -ForegroundColor Red
+            }
         }
         "13" {
             $explorerLogPath = "$env:USERPROFILE\AppData\Local\Microsoft\Windows\Explorer"
