@@ -34,7 +34,16 @@ do {
     Write-Host "14. AudioExe Kontrolü (Brave)"
     Write-Host "15. AudioExe Kontrolü (Chrome)"
     Write-Host "16. AudioExe Kontrolü (Opera)"
-    Write-Host "17. Çıkış"
+    Write-Host "17. BamParser Kontrolü (Brave)"
+    Write-Host "18. BamParser Kontrolü (Chrome)"
+    Write-Host "19. BamParser Kontrolü (Opera)"
+    Write-Host "20. PrefetchParser Kontrolü (Brave)"
+    Write-Host "21. PrefetchParser Kontrolü (Chrome)"
+    Write-Host "22. PrefetchParser Kontrolü (Opera)"
+    Write-Host "23. ProcessParser Kontrolü (Brave)"
+    Write-Host "24. ProcessParser Kontrolü (Chrome)"
+    Write-Host "25. ProcessParser Kontrolü (Opera)"
+    Write-Host "26. Çıkış"
 
     $choice = Read-Host "Seçiminizi yapın"
 
@@ -75,6 +84,42 @@ do {
         "16" {
             start opera.exe https://www.nirsoft.net/utils/appaudioconfig-x64.zip
             Write-Host "AudioConfig İndiriliyor." -ForegroundColor Yellow
+        }
+        "23" {
+            start brave.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676390274764870/ProcessParser.exe?ex=67ccb0f2&is=67cb5f72&hm=5104814799e103bb310791af20856235f835f333da71ad61920905b59be6e8da&
+            Write-Host "ProcessParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "24" {
+            start chrome.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676390274764870/ProcessParser.exe?ex=67ccb0f2&is=67cb5f72&hm=5104814799e103bb310791af20856235f835f333da71ad61920905b59be6e8da&
+            Write-Host "ProcessParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "25" {
+            start opera.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676390274764870/ProcessParser.exe?ex=67ccb0f2&is=67cb5f72&hm=5104814799e103bb310791af20856235f835f333da71ad61920905b59be6e8da&
+            Write-Host "ProcessParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "20" {
+            start brave.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676374642589789/PrefetchParser.exe?ex=67ccb0ee&is=67cb5f6e&hm=47e1c50c126e16a35073feb2844d8f64ac2e2a1d798a33def6916cb58f5ce701&
+            Write-Host "PrefetchParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "21" {
+            start chrome.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676374642589789/PrefetchParser.exe?ex=67ccb0ee&is=67cb5f6e&hm=47e1c50c126e16a35073feb2844d8f64ac2e2a1d798a33def6916cb58f5ce701&
+            Write-Host "PrefetchParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "22" {
+            start opera.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676374642589789/PrefetchParser.exe?ex=67ccb0ee&is=67cb5f6e&hm=47e1c50c126e16a35073feb2844d8f64ac2e2a1d798a33def6916cb58f5ce701&
+            Write-Host "PrefetchParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "17" {
+            start brave.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676358410768434/BAMParser.exe?ex=67ccb0ea&is=67cb5f6a&hm=bd8cf7d6be27a9cb6d181a1a58ec9d50a973977b7ea7d30fb361cfae9a864fb3&
+            Write-Host "BamParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "18" {
+            start chrome.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676358410768434/BAMParser.exe?ex=67ccb0ea&is=67cb5f6a&hm=bd8cf7d6be27a9cb6d181a1a58ec9d50a973977b7ea7d30fb361cfae9a864fb3&
+            Write-Host "BamParser İndiriliyor." -ForegroundColor Yellow
+        }
+        "19" {
+            start opera.exe https://cdn.discordapp.com/attachments/1128787174981128263/1347676358410768434/BAMParser.exe?ex=67ccb0ea&is=67cb5f6a&hm=bd8cf7d6be27a9cb6d181a1a58ec9d50a973977b7ea7d30fb361cfae9a864fb3&
+            Write-Host "BamParser İndiriliyor." -ForegroundColor Yellow
         }
          "7" {
             reg export "HKEY_LOCAL_MACHINE\SOFTWARE\Clients\StartMenuInternet" "$env:USERPROFILE\Desktop\BrowserKontrol.reg" /y
@@ -124,7 +169,7 @@ do {
                 Write-Host "Explorer.exe log klasörü bulunamadı." -ForegroundColor Red
             }
         }
-        "17" {
+        "26" {
             Write-Host "Çıkış yapılıyor..." -ForegroundColor Red
         }
         Default {
@@ -132,4 +177,4 @@ do {
         }
     }
     Write-Host ""
-} while ($choice -ne "17")
+} while ($choice -ne "26")
